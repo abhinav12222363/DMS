@@ -1,15 +1,13 @@
-import { BarChart3, Boxes, FileText, RefreshCcw, Settings, Shield, Wrench, ReceiptText } from 'lucide-react';
+import { BarChart3, Boxes, FileText, ReceiptText, BadgePercent, FileWarning } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 const menus = [
-  { to: '/dashboard', icon: BarChart3, label: 'Dashboard and Chart' },
-  { to: '/master/items', icon: Boxes, label: 'Master' },
-  { to: '/transactions/sales-orders', icon: ReceiptText, label: 'Transactions' },
-  { to: '/reports', icon: FileText, label: 'Reports' },
-  { to: '/sync', icon: RefreshCcw, label: 'Synchronization' },
-  { to: '/configuration', icon: Settings, label: 'Configuration' },
-  { to: '/security', icon: Shield, label: 'Security' },
-  { to: '/tools', icon: Wrench, label: 'Tools' }
+  { to: '/dashboard', icon: BarChart3, label: 'Dashboard' },
+  { to: '/master/items', icon: Boxes, label: 'Item Master' },
+  { to: '/transactions/sales-orders', icon: ReceiptText, label: 'Dealer Orders' },
+  { to: '/schemes', icon: BadgePercent, label: 'Schemes' },
+  { to: '/claims', icon: FileWarning, label: 'Claims' },
+  { to: '/reports', icon: FileText, label: 'Reports' }
 ];
 
 export function Sidebar() {

@@ -13,6 +13,17 @@ public sealed class DmsDbContext : DbContext
     public DbSet<Item> Items => Set<Item>();
     public DbSet<SalesOrder> SalesOrders => Set<SalesOrder>();
 
+    public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+    public DbSet<OrderApproval> OrderApprovals => Set<OrderApproval>();
+    public DbSet<Invoice> Invoices => Set<Invoice>();
+    public DbSet<Stock> Stocks => Set<Stock>();
+    public DbSet<Scheme> Schemes => Set<Scheme>();
+    public DbSet<SchemeSlab> SchemeSlabs => Set<SchemeSlab>();
+    public DbSet<Claim> Claims => Set<Claim>();
+    public DbSet<ClaimDocument> ClaimDocuments => Set<ClaimDocument>();
+    public DbSet<Replenishment> Replenishments => Set<Replenishment>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DmsDbContext).Assembly);

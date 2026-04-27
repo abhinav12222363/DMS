@@ -4,8 +4,10 @@ import { DistributorSelectionPage } from '../pages/DistributorSelectionPage';
 import { MainLayout } from '../components/MainLayout';
 import { SalesDashboardPage } from '../features/dashboard/SalesDashboardPage';
 import { ItemMasterPage } from '../features/master/ItemMasterPage';
-import { SalesOrderPage } from '../features/transactions/SalesOrderPage';
-import { PlaceholderPage } from '../pages/PlaceholderPage';
+import { DealerOrdersPage } from '../features/transactions/DealerOrdersPage';
+import { ReportsPage } from '../features/reports/ReportsPage';
+import { ClaimsPage } from '../features/claims/ClaimsPage';
+import { SchemesPage } from '../features/schemes/SchemesPage';
 
 export const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -17,13 +19,10 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/dashboard" replace /> },
       { path: 'dashboard', element: <SalesDashboardPage /> },
       { path: 'master/items', element: <ItemMasterPage /> },
-      { path: 'transactions/sales-orders', element: <SalesOrderPage /> },
-      { path: 'reports', element: <PlaceholderPage title="Reports" /> },
-      { path: 'sync', element: <PlaceholderPage title="Synchronization" /> },
-      { path: 'configuration', element: <PlaceholderPage title="Configuration" /> },
-      { path: 'security', element: <PlaceholderPage title="Security" /> },
-      { path: 'tools', element: <PlaceholderPage title="Tools" /> },
-      { path: 'claims', element: <PlaceholderPage title="Claim Management" /> }
+      { path: 'transactions/sales-orders', element: <DealerOrdersPage /> },
+      { path: 'schemes', element: <SchemesPage /> },
+      { path: 'reports', element: <ReportsPage /> },
+      { path: 'claims', element: <ClaimsPage /> }
     ]
   }
 ]);

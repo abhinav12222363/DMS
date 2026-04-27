@@ -8,4 +8,7 @@ public sealed class Item : BaseEntity
     public string Name { get; set; } = string.Empty;
     public string Unit { get; set; } = string.Empty;
     public string Group { get; set; } = string.Empty;
+    public string Attribute { get; set; } = string.Empty;
+    public decimal Moq { get; set; }
+    public decimal BasePrice { get; set; }
 }
