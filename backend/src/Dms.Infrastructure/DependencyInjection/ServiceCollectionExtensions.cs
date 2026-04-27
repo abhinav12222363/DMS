@@ -2,6 +2,7 @@ using System.Text;
 using Dms.Application.Abstractions;
 using Dms.Application.Masters;
 using Dms.Application.Transactions;
+using Dms.Application.Workflows;
 using Dms.Infrastructure.Auth;
 using Dms.Infrastructure.Services;
 using Dms.Persistence;
@@ -35,6 +36,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IDistributorRepository, DistributorRepository>();
         services.AddScoped<IItemRepository, ItemRepository>();
         services.AddScoped<ISalesOrderRepository, SalesOrderRepository>();
+        services.AddScoped<IWorkflowRepository, WorkflowRepository>();
 
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IItemService, ItemService>();
@@ -42,6 +44,13 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddScoped<IDistributorService, DistributorService>();
         services.AddScoped<IReportService, ReportService>();
+        services.AddScoped<IDealerPortalService, DealerPortalService>();
+        services.AddScoped<IApprovalService, ApprovalService>();
+        services.AddScoped<ISchemeWorkflowService, SchemeWorkflowService>();
+        services.AddScoped<IClaimService, ClaimService>();
+        services.AddScoped<IInventoryService, InventoryService>();
+        services.AddScoped<IReplenishmentService, ReplenishmentService>();
+        services.AddScoped<IErpIntegrationService, ErpIntegrationService>();
 
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<ICaptchaValidator, CaptchaValidator>();
@@ -49,6 +58,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IEmailSender, EmailSender>();
 
         services.AddDistributedMemoryCache(); // Swap to Redis in production
+        services.AddHostedService<ReplenishmentBackgroundJob>();
 
         var signingKey = config["Jwt:SigningKey"] ?? throw new InvalidOperationException("Jwt signing key is missing");
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

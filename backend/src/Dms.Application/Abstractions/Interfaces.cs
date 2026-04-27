@@ -66,3 +66,28 @@ public interface IEmailSender
 {
     Task SendAsync(string toEmail, string subject, string body, CancellationToken ct);
 }
+
+public interface IWorkflowRepository
+{
+    Task<Dms.Domain.Entities.Distributor?> GetDistributorAsync(Guid distributorId, CancellationToken ct);
+    Task<Dms.Domain.Entities.Order?> GetOrderAsync(Guid orderId, CancellationToken ct);
+    Task<Dms.Domain.Entities.Item?> GetItemAsync(Guid itemId, CancellationToken ct);
+    Task<Dms.Domain.Entities.Item?> GetItemByCodeAsync(string itemCode, CancellationToken ct);
+    Task<Dms.Domain.Entities.Distributor?> GetDistributorByCodeAsync(string code, CancellationToken ct);
+    Task AddItemAsync(Dms.Domain.Entities.Item item, CancellationToken ct);
+    Task AddDistributorAsync(Dms.Domain.Entities.Distributor distributor, CancellationToken ct);
+    Task AddStockAsync(Dms.Domain.Entities.Stock stock, CancellationToken ct);
+    Task<Dms.Domain.Entities.Stock?> GetStockAsync(Guid distributorId, Guid itemId, CancellationToken ct);
+    Task<Dms.Domain.Entities.Scheme?> GetSchemeAsync(Guid schemeId, CancellationToken ct);
+    Task<Dms.Domain.Entities.Claim?> GetClaimAsync(Guid claimId, CancellationToken ct);
+    IQueryable<Dms.Domain.Entities.Order> OrdersQuery();
+    IQueryable<Dms.Domain.Entities.Scheme> SchemesQuery();
+    IQueryable<Dms.Domain.Entities.Claim> ClaimsQuery();
+    IQueryable<Dms.Domain.Entities.Stock> StocksQuery();
+    Task AddOrderAsync(Dms.Domain.Entities.Order order, CancellationToken ct);
+    Task AddInvoiceAsync(Dms.Domain.Entities.Invoice invoice, CancellationToken ct);
+    Task AddSchemeAsync(Dms.Domain.Entities.Scheme scheme, CancellationToken ct);
+    Task AddClaimAsync(Dms.Domain.Entities.Claim claim, CancellationToken ct);
+    Task AddReplenishmentAsync(Dms.Domain.Entities.Replenishment replenishment, CancellationToken ct);
+    Task SaveChangesAsync(CancellationToken ct);
+}
